@@ -20,21 +20,33 @@
 //c1.Salvar();
 //cp2.Salvar();
 
+try
+{
+    ContaEmpresa c1 = new ContaEmpresa();
+    c1.Depositar(1000);
+    double limiteEmprestimo = 10000;
+    double totalEmprestimo = 1000;
 
-ContaEmpresa c1 = new ContaEmpresa();
-c1.Depositar(1000);
-double limiteEmprestimo = 10000;
-double totalEmprestimo = 1000;
+    c1.setLimiteEmprestimo(limiteEmprestimo);
 
-c1.setLimiteEmprestimo(limiteEmprestimo);
+    c1.FazerEmprestimo(1000);
 
-c1.FazerEmprestimo(1000);
+    ContaEstudante c2 = new ContaEstudante();
+    c2.Depositar(10000);
+    double chequeEspecial = 1000;
 
-ContaEstudante c2 = new ContaEstudante();
-c2.Depositar(10000);
-double chequeEspecial = 1000;
+    c2.setLimite(chequeEspecial);
 
-c2.setLimite(chequeEspecial);
+    c2.Sacar(1000);
+}
+catch (Exception)
+{
+    Console.WriteLine("Erro"); ;
+}
 
-c2.Sacar(1000);
+// Conteúdos da prova:
+// Classe, atributo, parâmetros,
+// exceções, métodos, get e set
+// Herança, Polimorfismo, construtor,
+// sobrecarga de método, Classe estáticas
 

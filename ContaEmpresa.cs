@@ -27,24 +27,25 @@
     }
 
     //Métodos
+    // método sobrescrito
     public override void Sacar(double valor)
     {
         //Terminar
-        if (valor > 5000)
+        if (valor > 5000 && valor <= _saldo - 5)
         {
-            valor += 5.00;
             _saldo -= valor;
-        } else base.Sacar(valor);
+            _saldo = - 5;
+
+        } else if(valor < 5000) base.Sacar(valor);
+        else throw new Exception("Inválido");
     }
 
     public void FazerEmprestimo(double valor)
     {
         if (valor <= _limiteEmprestimo - _totalEmprestimo)
         {
-            //Implementar regra
+            _totalEmprestimo += valor;
             _saldo += valor;
-            _totalEmprestimo += _saldo;
-            //Console.WriteLine("* u *");
         }
         else throw new Exception("Inválido");
                

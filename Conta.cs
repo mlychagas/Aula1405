@@ -1,6 +1,6 @@
 ﻿public class Conta 
 {
-    private int _nConta;
+    private string _nConta;
     private string _agencia;
     private string _titular;
     protected double _saldo;
@@ -10,13 +10,13 @@
         _saldo = 0;
     }
     // Get e Set
-    public int getnConta()
+    public string getnConta()
     {
-        return _nConta;
+        return _nConta; // o get sempre em um retorno
     }
-    public void setnConta(int nConta)
+    public void setnConta(string nConta)
     {
-        _nConta = nConta;
+        _nConta = nConta; // sempre tem um parâmetro
     }
 
     public string getAgencia()
@@ -44,29 +44,26 @@
     // Métodos
     public virtual void Sacar(double valor)
     {
-        if (_saldo < valor)
+        if (_saldo >= valor && valor > 0)
         {
-            throw new Exception("Saldo insuficiente");
+            _saldo -= valor; 
         }
         else
         {
-            _saldo -= valor;
-            Console.WriteLine("Saque realizado!");
+            throw new Exception("Saldo insuficiente");
         }
 
     }
 
     public virtual void Depositar(double valor)
     {
-        if (valor > 0)
-        {
-            _saldo += valor;
-            Console.WriteLine("Valor depositado!");
-        }
-        else
+        if (valor <= 0)
         {
             throw new Exception("Valor inválido");
         }
+        _saldo += valor;
+        
+        
     }
 
 }

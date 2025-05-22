@@ -35,17 +35,12 @@ public class ContaEstudante : Conta
     // Métodos
     public override void Sacar(double valor)
     {
-        if (_saldo <= 0)
+        if (valor > 0 && valor <= _saldo + _limiteChequeEsp )
         {
-            if (valor <= _limiteChequeEsp)
-            {
-                _saldo -= valor;
-                //Console.WriteLine("-U-");
-            }
-            else throw new Exception("Inválido");
-        } else base.Sacar(valor);
-        //implementar regra de saque até atingir o valor de cheque especial
-        
+            _saldo -= valor;
+        }
+        else throw new Exception("Inválido");
+
     }
     
 }
