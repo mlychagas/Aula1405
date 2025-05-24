@@ -33,8 +33,7 @@
         //Terminar
         if (valor > 5000 && valor <= _saldo - 5)
         {
-            _saldo -= valor;
-            _saldo = - 5;
+            _saldo -= (valor + 5) ;
 
         } else if(valor < 5000) base.Sacar(valor);
         else throw new Exception("Inválido");
